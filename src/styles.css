@@ -1,0 +1,17 @@
+.App {
+  font-family: sans-serif;
+}
+
+.burger-menu {
+  display: flexbox;
+}
+
+.burger-menu-icon-left {
+  cursor: pointer;
+  padding-left: 95%;
+}
+
+.burger-menu-icon-right {
+  cursor: pointer;
+  padding-right: 95%;
+}
