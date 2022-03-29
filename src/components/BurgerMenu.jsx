@@ -13,9 +13,10 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const { handlePosition, isLeft, handleWidth, width } = useContext(
-    SettingsContext
-  );
+
+  const { getSavedValue } = useContext(SettingsContext);
+  const isLeft = getSavedValue("isLeft", false);
+  const width = getSavedValue("width", 300);
 
   return (
     <div className="burger-menu">

@@ -3,31 +3,36 @@ import React, { createContext, useState } from "react";
 const SettingsContext = createContext([]);
 
 export function SettingsProvider({ children }) {
+  
   /* Burger Menu */
-  const [isLeft, setIsLeft] = useState(true);
-  const [width, setWidth] = useState(300);
+  
+  const getSavedValue = (key, defaultValue) => {
+    const saved = localStorage.getItem(key);
+    const initial = JSON.parse(saved);
+    return initial || defaultValue;
+  }
 
-  const handlePosition = (burgerSide) => {
-    if (burgerSide === "left") {
-      setIsLeft(true);
-    } else if (burgerSide === "right") {
-      setIsLeft(false);
-    } else {
-      setIsLeft(false);
-    }
+  const [isLeft, setIsLeft] = useState(getSavedValue(isLeft, true));
+  const [width, setWidth] = useState(getSavedValue(Number(width, 300)));
+
+
+  const handleBurgerPosition = (leftSide) => {
+    setIsLeft(leftSide); // true = "left", false = "right"
   };
 
-  const handleWidth = (pixels) => {
+  const handleBurgerWidth = (pixels) => {
     setWidth(pixels);
   };
 
   return (
     <SettingsContext.Provider
       value={{
-        handlePosition,
+        getSavedValue,
+
+        handleBurgerPosition,
         isLeft,
 
-        handleWidth,
+        handleBurgerWidth,
         width
       }}
     >
