@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 
 // import { fallDown as Burger, SubMenu, Item } from "burger-menu";
 import { slide as Burger, SubMenu, Item } from "burger-menu";
-import SettingsContext from "../AppContext";
+import SettingsContext from "../contexts/AppContext";
 
 import "burger-menu/lib/index.css";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,17 +18,34 @@ function BurgerMenu() {
   const isLeft = getSavedValue("isLeft", false);
   const width = getSavedValue("width", 300);
 
+  const muiStyles = {
+    largeIcon: {
+      width: 30,
+      height: 30,
+    },
+    
+    mediumIcon: {
+      width: 20,
+      height: 20,
+    },
+
+    smallIcon: {
+      width: 16,
+      height: 16,
+    },
+  };
+
   return (
-    <div className="burger-menu">
+    <div>
       <div onClick={() => setIsOpen(!isOpen)}>
         {!isLeft ? (
-          <span className="burger-menu-icon-left">
-            <MenuIcon />
-          </span>
+          <div className="burger-menu-icon-left">
+            <MenuIcon style={{ fontSize: 30}} />
+          </div>
         ) : (
-          <span className="burger-menu-icon-right">
-            <MenuIcon />
-          </span>
+          <div className="burger-menu-icon-right">
+            <MenuIcon style={muiStyles.mediumIcon}/>
+          </div>
         )}
       </div>
       <Burger
@@ -43,17 +60,17 @@ function BurgerMenu() {
         onClose={() => setIsOpen(false)}
         left={isLeft}
       >
-        <Item icon={<TocIcon />} itemKey={"content"} text={"Content"}></Item>
-        <SubMenu icon={<SearchIcon />} title="Search">
+        <Item icon={<TocIcon style={muiStyles.smallIcon} />} itemKey={"content"} text={"Content"}></Item>
+        <SubMenu icon={<SearchIcon style={muiStyles.smallIcon} />} title="Search">
           <Item itemKey={"searchA"} text={"by term"}></Item>
           <Item itemKey={"searchB"} text={"by category"}></Item>
         </SubMenu>
         <Item
-          icon={<SettingsIcon />}
+          icon={<SettingsIcon style={muiStyles.smallIcon} />}
           itemKey={"settings"}
           text={"Settings"}
         ></Item>
-        <Item icon={<InfoIcon />} itemKey={"about"} text={"About"}></Item>
+        <Item icon={<InfoIcon style={muiStyles.smallIcon} />} itemKey={"about"} text={"About"}></Item>
       </Burger>
     </div>
   );

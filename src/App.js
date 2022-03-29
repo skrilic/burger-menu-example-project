@@ -6,9 +6,10 @@ import Content from "./components/Content";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
 import About from "./components/About";
-import { SettingsProvider } from "./AppContext";
+import { SettingsProvider } from "./contexts/AppContext";
 
 export default function App() {
+  
   return (
     <div className="App">
       <SettingsProvider>

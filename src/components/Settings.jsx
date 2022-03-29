@@ -1,6 +1,6 @@
 import { CheckBox } from "@mui/icons-material";
 import {useState, useContext} from "react";
-import SettingsContext from "../AppContext";
+import SettingsContext from "../contexts/AppContext";
 
 function Settings() {
   const { getSavedValue, handleBurgerPosition, handleBurgerWidth} = useContext(SettingsContext);
