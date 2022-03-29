@@ -25,8 +25,8 @@ function Settings() {
     <form>
       <h3>SETTINGS</h3>
       <div>
-        <label>Left side menu: </label>
-        <input name="left-right" type="checkbox" onChange={handleChange} />
+        <label>Right side menu: </label>
+        <input name="left-right" type="checkbox" onChange={handleChange} value={ isLeftChecked ? "checked" : "" } />
       </div>
       <div>
         <label>Width of menu: </label>
