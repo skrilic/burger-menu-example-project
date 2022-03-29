@@ -37,17 +37,17 @@ function BurgerMenu() {
 
   return (
     <div>
-      <div onClick={() => setIsOpen(!isOpen)}>
+
         {!isLeft ? (
-          <div className="burger-menu-icon-left">
-            <MenuIcon style={{ fontSize: 30}} />
+          <div className="burger-menu-icon-left" onClick={() => setIsOpen(!isOpen)}>
+            <MenuIcon style={muiStyles.largeIcon} />
           </div>
         ) : (
-          <div className="burger-menu-icon-right">
-            <MenuIcon style={muiStyles.mediumIcon}/>
+          <div className="burger-menu-icon-right" onClick={() => setIsOpen(!isOpen)}>
+            <MenuIcon style={muiStyles.largeIcon} />
           </div>
         )}
-      </div>
+
       <Burger
         className="burger-menu"
         isOpen={isOpen}
