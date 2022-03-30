@@ -60,17 +60,17 @@ function BurgerMenu() {
         onClose={() => setIsOpen(false)}
         left={isLeft}
       >
-        <Item icon={<TocIcon style={muiStyles.smallIcon} />} itemKey={"content"} text={"Content"}></Item>
+        <Item icon={<TocIcon style={muiStyles.smallIcon}/>} itemKey={"content"} text={"Content"}/>
         <SubMenu icon={<SearchIcon style={muiStyles.smallIcon} />} title="Search">
-          <Item itemKey={"searchA"} text={"by term"}></Item>
-          <Item itemKey={"searchB"} text={"by category"}></Item>
+          <Item itemKey={"searchA"} text={"by term"}/>
+          <Item itemKey={"searchB"} text={"by category"}/>
         </SubMenu>
         <Item
-          icon={<SettingsIcon style={muiStyles.smallIcon} />}
+          icon={<SettingsIcon style={muiStyles.smallIcon}/>}
           itemKey={"settings"}
           text={"Settings"}
-        ></Item>
-        <Item icon={<InfoIcon style={muiStyles.smallIcon} />} itemKey={"about"} text={"About"}></Item>
+          />
+        <Item icon={<InfoIcon style={muiStyles.smallIcon}/>} itemKey={"about"} text={"About"}/>
       </Burger>
     </div>
   );

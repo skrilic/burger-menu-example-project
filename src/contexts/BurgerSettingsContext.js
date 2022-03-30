@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 
 const BurgerSettingsContext = createContext([]);
 
@@ -8,14 +8,18 @@ export function BurgerSettingsProvider({ children }) {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
     return initial || defaultValue;
-  }
+  };
 
-  const [isLeft, setIsLeft] = useState(getSavedValue(isLeft, true));
-  const [width, setWidth] = useState(getSavedValue(Number(width, 300)));
+  const [isLeft, setIsLeft] = useState(getSavedValue("isLeft", true));
+  const [width, setWidth] = useState(getSavedValue("width", 300));
 
+  useEffect((isLeft) => {
+      localStorage.setItem("isLeft", isLeft);
+    }, [isLeft]);
 
-  const handleBurgerPosition = (leftSide) => {
-    setIsLeft(leftSide); // true = "left", false = "right"
+  const handleBurgerPosition = (newVal) => {
+      console.log("New Left", newVal);
+    setIsLeft(newVal); // true = "left", false = "right"
   };
 
   const handleBurgerWidth = (pixels) => {
