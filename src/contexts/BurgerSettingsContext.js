@@ -1,11 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, {createContext, useState} from "react";
 
-const SettingsContext = createContext([]);
+const BurgerSettingsContext = createContext([]);
 
-export function SettingsProvider({ children }) {
-  
-  /* Burger Menu */
-  
+export function BurgerSettingsProvider({ children }) {
+
   const getSavedValue = (key, defaultValue) => {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
@@ -25,7 +23,7 @@ export function SettingsProvider({ children }) {
   };
 
   return (
-    <SettingsContext.Provider
+    <BurgerSettingsContext.Provider
       value={{
         getSavedValue,
 
@@ -37,8 +35,8 @@ export function SettingsProvider({ children }) {
       }}
     >
       {children}
-    </SettingsContext.Provider>
+    </BurgerSettingsContext.Provider>
   );
 }
 
-export default SettingsContext;
+export default BurgerSettingsContext;

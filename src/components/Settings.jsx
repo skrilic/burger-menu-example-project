@@ -1,9 +1,9 @@
 import { CheckBox } from "@mui/icons-material";
 import {useState, useContext} from "react";
-import SettingsContext from "../contexts/AppContext";
+import BurgerSettingsContext from "../contexts/BurgerSettingsContext";
 
 function Settings() {
-  const { getSavedValue, handleBurgerPosition, handleBurgerWidth} = useContext(SettingsContext);
+  const { getSavedValue, handleBurgerPosition, handleBurgerWidth} = useContext(BurgerSettingsContext);
   const [leftVal, setLeftVal] = useState(getSavedValue("isLeft", false));
   const [widthVal, setWidthVal] = useState(getSavedValue("width", 300));
 

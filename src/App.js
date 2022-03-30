@@ -6,13 +6,15 @@ import Content from "./components/Content";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
 import About from "./components/About";
-import { SettingsProvider } from "./contexts/AppContext";
+import { BurgerSettingsProvider } from "./contexts/BurgerSettingsContext";
+import { ThemeSettingProvider } from "./contexts/ThemeSettingContext";
 
 export default function App() {
   
   return (
     <div className="App">
-      <SettingsProvider>
+      <ThemeSettingProvider>
+      <BurgerSettingsProvider>
         <BurgerMenu />
         <BrowserRouter>
           <Routes>
@@ -24,7 +26,8 @@ export default function App() {
             <Route path="/about" element={<About />} />
           </Routes>
         </BrowserRouter>
-      </SettingsProvider>
+      </BurgerSettingsProvider>
+      </ThemeSettingProvider>
     </div>
   );
 }

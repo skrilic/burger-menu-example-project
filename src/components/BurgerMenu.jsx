@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 
 // import { fallDown as Burger, SubMenu, Item } from "burger-menu";
 import { slide as Burger, SubMenu, Item } from "burger-menu";
-import SettingsContext from "../contexts/AppContext";
+import BurgerSettingsContext from "../contexts/BurgerSettingsContext";
 
 import "burger-menu/lib/index.css";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -14,7 +14,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { getSavedValue } = useContext(SettingsContext);
+  const { getSavedValue } = useContext(BurgerSettingsContext);
   const isLeft = getSavedValue("isLeft", false);
   const width = getSavedValue("width", 300);
 
