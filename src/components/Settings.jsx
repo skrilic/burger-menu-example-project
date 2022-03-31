@@ -2,7 +2,7 @@ import {useState, useContext, useEffect} from "react";
 import BurgerSettingsContext from "../contexts/BurgerSettingsContext";
 
 function Settings() {
-    const { getSavedValue, handleBurgerPosition, isLeft, handleBurgerWidth, width} = useContext(BurgerSettingsContext);
+    const { handleBurgerPosition, isLeft, handleBurgerWidth, width} = useContext(BurgerSettingsContext);
     const [leftVal, setLeftVal] = useState(isLeft);
     const [widthVal, setWidthVal] = useState(width);
 
@@ -12,11 +12,9 @@ function Settings() {
         setLeftVal(!leftVal);
         console.log(!leftVal);
         handleBurgerPosition(!leftVal);
-        localStorage.setItem("isLeft", !leftVal ? true : false);
     } else if (name === "width") {
         setWidthVal(value);
         handleBurgerWidth(Number(value));
-        localStorage.setItem("width", value);
     }
     // else if (name === "themes") {
     //   // handleBurgerWidth(Number(value));
@@ -37,7 +35,7 @@ function Settings() {
         <label>Left side menu: </label>
         <input name="left-right" type="checkbox"
                onChange={handleChange}
-               checked={(leftVal) ? "on" : ""}
+               checked={leftVal}
         />
       </div>
 

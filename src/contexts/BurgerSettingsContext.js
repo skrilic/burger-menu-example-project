@@ -17,21 +17,19 @@ export function BurgerSettingsProvider({ children }) {
       "theme": "night-theme"
   });
 
-  const [isLeft, setIsLeft] = useState(getSavedValue("isLeft", true));
+  const [isLeft, setIsLeft] = useState(getSavedValue("isLeft", false));
   const [width, setWidth] = useState(getSavedValue("width", 300));
 
   const handleBurgerPosition = (newPos) => {
     setIsLeft(newPos); // true = "left", false = "right"
+    localStorage.setItem("isLeft", newPos);
   };
-
-
 
   const handleBurgerWidth = (pixels) => {
     setWidth(pixels);
+    localStorage.setItem("width", pixels);
   };
-  getSavedValue("isLeft", "NEMA")
     // console.log("Context handle after isLeft: ", getSavedValue("isLeft", "NEMA") )
-
 
   return (
     <BurgerSettingsContext.Provider
