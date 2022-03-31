@@ -1,26 +1,22 @@
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import BurgerSettingsContext from "../contexts/BurgerSettingsContext";
 
 function Settings() {
-  const { getSavedValue, handleBurgerPosition, isLeft, handleBurgerWidth} = useContext(BurgerSettingsContext);
-  // const [leftVal, setLeftVal] = useState(getSavedValue("isLeft", false));
-  const [widthVal, setWidthVal] = useState(getSavedValue("width", 300));
-
+    const { getSavedValue, handleBurgerPosition, isLeft, handleBurgerWidth, width} = useContext(BurgerSettingsContext);
+    const [leftVal, setLeftVal] = useState(isLeft);
+    const [widthVal, setWidthVal] = useState(width);
 
   const handleChange = (event) => {
-
     const {name, value} = event.target;
-
     if (name === "left-right") {
-      handleBurgerPosition(!isLeft);
-      // localStorage.setItem("isLeft", !leftVal);
-      // setLeftVal(!leftVal);
-
+        setLeftVal(!leftVal);
+        console.log(!leftVal);
+        handleBurgerPosition(!leftVal);
+        localStorage.setItem("isLeft", !leftVal ? true : false);
     } else if (name === "width") {
-      handleBurgerWidth(Number(value));
-      localStorage.setItem("width", Number(value));
-      setWidthVal(value);
-
+        setWidthVal(value);
+        handleBurgerWidth(Number(value));
+        localStorage.setItem("width", value);
     }
     // else if (name === "themes") {
     //   // handleBurgerWidth(Number(value));
@@ -39,12 +35,15 @@ function Settings() {
 
       <div>
         <label>Left side menu: </label>
-        <input name="left-right" type="checkbox" onChange={handleChange} checked={isLeft} />
+        <input name="left-right" type="checkbox"
+               onChange={handleChange}
+               checked={(leftVal) ? "on" : ""}
+        />
       </div>
 
       <div>
         <label>Width of menu: </label>
-        <input name="width" type="number" min="200" max="400" step="10" onChange={handleChange} placeholder={widthVal} value={widthVal} />
+        <input name="width" type="number" min="200" max="400" step="10" onChange={handleChange} value={widthVal} />
       </div>
 
       {/*<div>*/}

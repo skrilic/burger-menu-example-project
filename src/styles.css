@@ -20,10 +20,10 @@ h3 {
 
 .burger-menu-icon-left {
   cursor: pointer;
-  padding-left: 95%;
+  padding-right: 95%;
 }
 
 .burger-menu-icon-right {
   cursor: pointer;
-  padding-right: 95%;
+  padding-left: 95%;
 }

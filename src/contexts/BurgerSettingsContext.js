@@ -7,24 +7,31 @@ export function BurgerSettingsProvider({ children }) {
   const getSavedValue = (key, defaultValue) => {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
+    console.log("GetSaved call", key, initial)
     return initial || defaultValue;
   };
+
+  const [ appSet, setAppSet ] = useState({
+      "isLeft": true,
+      "width": 300,
+      "theme": "night-theme"
+  });
 
   const [isLeft, setIsLeft] = useState(getSavedValue("isLeft", true));
   const [width, setWidth] = useState(getSavedValue("width", 300));
 
-  useEffect((isLeft) => {
-      localStorage.setItem("isLeft", isLeft);
-    }, [isLeft]);
-
-  const handleBurgerPosition = (newVal) => {
-      console.log("New Left", newVal);
-    setIsLeft(newVal); // true = "left", false = "right"
+  const handleBurgerPosition = (newPos) => {
+    setIsLeft(newPos); // true = "left", false = "right"
   };
+
+
 
   const handleBurgerWidth = (pixels) => {
     setWidth(pixels);
   };
+  getSavedValue("isLeft", "NEMA")
+    // console.log("Context handle after isLeft: ", getSavedValue("isLeft", "NEMA") )
+
 
   return (
     <BurgerSettingsContext.Provider

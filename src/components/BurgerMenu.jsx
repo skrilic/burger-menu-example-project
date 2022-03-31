@@ -14,9 +14,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { getSavedValue } = useContext(BurgerSettingsContext);
-  const isLeft = getSavedValue("isLeft", false);
-  const width = getSavedValue("width", 300);
+  const { isLeft, width } = useContext(BurgerSettingsContext);
 
   const muiStyles = {
     largeIcon: {
@@ -38,7 +36,7 @@ function BurgerMenu() {
   return (
     <div>
 
-        {!isLeft ? (
+        {isLeft ? (
           <div className="burger-menu-icon-left" onClick={() => setIsOpen(!isOpen)}>
             <MenuIcon style={muiStyles.largeIcon} />
           </div>
