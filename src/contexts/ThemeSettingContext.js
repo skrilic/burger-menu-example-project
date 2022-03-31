@@ -1,30 +1,29 @@
 import React, {createContext, useEffect, useState} from "react";
 
-const themes = {
-    night: "night-theme",
-    day: "day-theme"
-}
-
-const ThemeSettingContext = createContext({
-    theme: themes.night,
-    changeTheme: () => {},
-});
-
+const ThemeSettingContext = createContext([]);
 
 export function ThemeSettingProvider({ children }) {
-    const [theme, setTheme] = useState(themes.day);
+    const getSavedTheme = () => {
+        return localStorage.getItem("theme");
+    };
 
-    function changeTheme(theme) {
-        setTheme(theme);
-    }
+    const [theme, setTheme] = useState(getSavedTheme());
+
+    function handleTheme(theme) {
+        setTheme((prevTheme)  => {
+            document.body.classList.remove(prevTheme);
+            return theme;
+        });
+        localStorage.setItem("theme", theme);
+    };
 
     useEffect(() => {
         switch (theme) {
-            case themes.day:
-                document.body.classList.add("day-theme");
-                break;
-            case themes.night:
+            case "night-theme":
                 document.body.classList.add("night-theme");
+                break;
+            case "sepia-theme":
+                document.body.classList.add("sepia-theme");
                 break;
             default:
                 document.body.classList.add("day-theme");
@@ -33,7 +32,11 @@ export function ThemeSettingProvider({ children }) {
     }, [theme]);
 
     return (
-    <ThemeSettingContext.Provider value={{ theme: theme, changeTheme: changeTheme }}>
+    <ThemeSettingContext.Provider value={{
+        getSavedTheme: getSavedTheme,
+        theme: theme,
+        handleTheme: handleTheme
+    }}>
       {children}
     </ThemeSettingContext.Provider>
   );

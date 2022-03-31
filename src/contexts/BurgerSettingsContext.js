@@ -7,7 +7,6 @@ export function BurgerSettingsProvider({ children }) {
   const getSavedValue = (key, defaultValue) => {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
-    console.log("GetSaved call", key, initial)
     return initial || defaultValue;
   };
 
@@ -35,10 +34,8 @@ export function BurgerSettingsProvider({ children }) {
     <BurgerSettingsContext.Provider
       value={{
         getSavedValue,
-
         handleBurgerPosition,
         isLeft,
-
         handleBurgerWidth,
         width
       }}

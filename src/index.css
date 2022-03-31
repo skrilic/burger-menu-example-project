@@ -14,11 +14,16 @@ body {
 }
 
 .day-theme {
-  background: beige;
+  background: #fffeee;
   color: #0f0f0f;
 }
 
 .night-theme {
   background: #0f0f0f;
   color: beige;
+}
+
+.sepia-theme {
+  background: #ffdfaf;
+  color: #000000;
 }
