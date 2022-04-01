@@ -1,11 +1,12 @@
 import React, {createContext, useEffect, useState} from "react";
+import * as AppLocalStorage from "./AppLocalStorageKeys";
 
 const BurgerSettingsContext = createContext([]);
 
 export function BurgerSettingsProvider({ children }) {
 
   const getSavedValue = (key, defaultValue) => {
-    const saved = localStorage.getItem(key);
+    const saved = AppLocalStorage.get(key);
     const initial = JSON.parse(saved);
     return initial || defaultValue;
   };
@@ -15,24 +16,24 @@ export function BurgerSettingsProvider({ children }) {
 
   const handleBurgerPosition = (newPos) => {
     setIsLeft(newPos); // true = "left", false = "right"
-    localStorage.setItem("isLeft", newPos);
+    AppLocalStorage.set("isLeft", newPos);
   };
 
   const handleBurgerWidth = (pixels) => {
     setWidth(pixels);
-    localStorage.setItem("width", pixels);
+    AppLocalStorage.set("width", pixels);
   };
-    // console.log("Context handle after isLeft: ", getSavedValue("isLeft", "NEMA") )
 
   return (
     <BurgerSettingsContext.Provider
-      value={{
-        getSavedValue,
+      value={
+      {
         handleBurgerPosition,
         isLeft,
         handleBurgerWidth,
         width
-      }}
+      }
+    }
     >
       {children}
     </BurgerSettingsContext.Provider>

@@ -1,10 +1,11 @@
 import React, {createContext, useEffect, useState} from "react";
 
 const ThemeSettingContext = createContext([]);
+import * as AppLocalStorage from "./AppLocalStorageKeys";
 
 export function ThemeSettingProvider({ children }) {
     const getSavedTheme = () => {
-        return localStorage.getItem("theme") || "night-theme";
+        return AppLocalStorage.get("theme") || "day-theme";
     };
 
     const [theme, setTheme] = useState(getSavedTheme());
@@ -14,7 +15,7 @@ export function ThemeSettingProvider({ children }) {
             document.body.classList.remove(prevTheme);
             return theme;
         });
-        localStorage.setItem("theme", theme);
+        AppLocalStorage.set("theme", theme)
     };
 
     useEffect(() => {
@@ -33,7 +34,6 @@ export function ThemeSettingProvider({ children }) {
 
     return (
     <ThemeSettingContext.Provider value={{
-        getSavedTheme: getSavedTheme,
         theme: theme,
         handleTheme: handleTheme
     }}>
