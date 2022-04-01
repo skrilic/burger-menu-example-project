@@ -4,7 +4,7 @@ const ThemeSettingContext = createContext([]);
 
 export function ThemeSettingProvider({ children }) {
     const getSavedTheme = () => {
-        return localStorage.getItem("theme");
+        return localStorage.getItem("theme") || "night-theme";
     };
 
     const [theme, setTheme] = useState(getSavedTheme());

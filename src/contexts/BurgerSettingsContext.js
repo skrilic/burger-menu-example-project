@@ -10,12 +10,6 @@ export function BurgerSettingsProvider({ children }) {
     return initial || defaultValue;
   };
 
-  const [ appSet, setAppSet ] = useState({
-      "isLeft": true,
-      "width": 300,
-      "theme": "night-theme"
-  });
-
   const [isLeft, setIsLeft] = useState(getSavedValue("isLeft", false));
   const [width, setWidth] = useState(getSavedValue("width", 300));
 
