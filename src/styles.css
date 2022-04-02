@@ -11,7 +11,7 @@ h3 {
 }
 
 .menu {
-  color: rgb(119, 119, 117);
+  color: #606070;
 }
 
 .burger-menu {
@@ -20,10 +20,32 @@ h3 {
 
 .burger-menu-icon-left {
   cursor: pointer;
-  padding-right: 95%;
+  margin-right: 95%;
 }
 
 .burger-menu-icon-right {
   cursor: pointer;
-  padding-left: 95%;
+  margin-left: 95%
+}
+
+.settings {
+  text-align: center;
+  width: 80%;
+  margin: auto
+}
+
+.settings-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5vh;
+}
+
+.settings-item label {
+  width: 50%;
+  text-align: left;
+}
+
+.settings-item input, select {
+  width: 40%;
+  margin-left: 5%;
 }

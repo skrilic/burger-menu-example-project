@@ -1,6 +1,9 @@
 import {useState, useContext, useEffect} from "react";
+import Input from '@mui/material/Input';
+import {TextField} from "@mui/material";
 import BurgerSettingsContext from "../contexts/BurgerSettingsContext";
 import ThemeSettingContext from "../contexts/ThemeSettingContext";
+import {InputRounded} from "@mui/icons-material";
 
 function Settings() {
     const { handleBurgerPosition, isLeft, handleBurgerWidth, width} = useContext(BurgerSettingsContext);
@@ -31,27 +34,29 @@ function Settings() {
     return (
         <form onSubmit={handleSubmit}>
           <h3>SETTINGS</h3>
+          <div className="settings">
 
-          <div>
-            <label>Left side menu: </label>
-            <input name="left-right" type="checkbox"
-                   onChange={handleChange}
-                   checked={leftVal}
-            />
-          </div>
+              <div className="settings-item">
+                <label>Left side menu</label>
+                <input name="left-right" type="checkbox"
+                       onChange={handleChange}
+                       checked={leftVal}
+                />
+              </div>
 
-          <div>
-            <label>Width of menu: </label>
-            <input name="width" type="number" min="200" max="400" step="10" onChange={handleChange} value={widthVal} />
-          </div>
+              <div className="settings-item">
+                <label>Menu width</label>
+                <input name="width" type="number" min="200" max="400" step="10" onChange={handleChange} value={widthVal} />
+              </div>
 
-          <div>
-            <label htmlFor="themes">Theme: </label>
-            <select name="themes" value={currentTheme} onChange={handleChange}>
-              <option value="night-theme">Night</option>
-              <option value="day-theme">Day</option>
-              <option value="sepia-theme">Sepia</option>
-            </select>
+              <div className="settings-item">
+                <label htmlFor="themes">Theme</label>
+                <select name="themes" value={currentTheme} onChange={handleChange}>
+                  <option value="night-theme">Night</option>
+                  <option value="day-theme">Day</option>
+                  <option value="sepia-theme">Sepia</option>
+                </select>
+              </div>
           </div>
         </form>
     )
