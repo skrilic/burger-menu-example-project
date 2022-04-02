@@ -1,9 +1,6 @@
-import {useState, useContext, useEffect} from "react";
-import Input from '@mui/material/Input';
-import {TextField} from "@mui/material";
+import {useState, useContext} from "react";
 import BurgerSettingsContext from "../contexts/BurgerSettingsContext";
 import ThemeSettingContext from "../contexts/ThemeSettingContext";
-import {InputRounded} from "@mui/icons-material";
 
 function Settings() {
     const { handleBurgerPosition, isLeft, handleBurgerWidth, width} = useContext(BurgerSettingsContext);
